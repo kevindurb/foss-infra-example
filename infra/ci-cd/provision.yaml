@@ -1,0 +1,12 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - wait_for_connection:
+      delay: 60
+      timeout: 300
+
+- hosts: all
+  tasks:
+  - debug:
+      msg: "hello world"
