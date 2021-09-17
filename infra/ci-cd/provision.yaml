@@ -7,6 +7,16 @@
       timeout: 300
 
 - hosts: all
-  tasks:
-  - debug:
-      msg: "hello world"
+  vars_files:
+    - ../vars/main.yaml
+  pre_tasks:
+    - name: Update apt cache once before installing all the packages
+      apt:
+        update_cache: yes
+  roles:
+    - geerlingguy.github-users
+    - geerlingguy.ntp
+    - geerlingguy.security
+    - geerlingguy.pip
+    - geerlingguy.docker
+    - oefenweb.hostname
